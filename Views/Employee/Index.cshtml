@@ -1,0 +1,43 @@
+﻿@model List<EmployeeModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employee Details</h1>
+
+<p>
+    <a asp-action="Detail">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Gender</th>
+            <th>ImageUrl</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.Name</td>
+                <td>@employee.Salary</td>
+                <td>@employee.Gender</td>
+                <td><img src="@employee.ImageUrl" alt="Employee Image" style="max-width: 100px; max-height: 100px;" /></td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@employee.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@employee.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@employee.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
